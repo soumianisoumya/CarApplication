@@ -17,7 +17,7 @@ public class MainApp {
 		
 		try {
 			
-			Syste.out.println(carSer.getCarById(1101));
+			System.out.println(carSer.getCarById(1101));
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
