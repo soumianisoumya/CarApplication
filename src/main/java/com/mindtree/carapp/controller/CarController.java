@@ -23,7 +23,7 @@ import com.mindtree.carapp.service.CarService;
 @RestController
 public class CarController {
 
-	static AbstractApplicationContext context = new ClassPathXmlApplicationContext("/opt/tomcat/webapps/CarApp/WEB-INF/Beans.xml");
+	static AbstractApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/Beans.xml");
 	static CarService carSer = (CarService) context.getBean("carServiceBean");
 
 	@RequestMapping(value = "/car", method = RequestMethod.GET)
