@@ -21,5 +21,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<br>
+	<a href="car">Back</a>
 </body>
 </html>

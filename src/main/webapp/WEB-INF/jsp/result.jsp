@@ -24,6 +24,9 @@
 			<td>${price}</td>
 		</tr>
 	</table>
+	
+	<br>
+	<a href="car">Back</a>
 
 </body>
 </html>
