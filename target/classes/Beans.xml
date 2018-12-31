@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="dataSourceBean"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://172.17.0.2:3306/carinfo"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="welcome123"></property>
+	</bean>
+	
+	<bean id="carDaoBean"
+		class="com.mindtree.carapp.dao.daoimpl.CarDaoImpl">
+		<property name="dataSource" ref="dataSourceBean"></property>
+	</bean>
+
+	<bean id="carServiceBean"
+		class="com.mindtree.carapp.service.serviceimpl.CarServiceImpl">
+		<property name="carDao" ref="carDaoBean"></property>
+	</bean>
+	
+	<bean id="carBean"
+		class="com.mindtree.carapp.entity.Car"
+		scope="prototype">
+	</bean>
+</beans>
