@@ -31,6 +31,11 @@ public class CarController {
 		return new ModelAndView("car", "command", new Car());
 	}
 
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home() {
+		return "home";
+	}
+	
 	@RequestMapping(value = "/addcar", method = RequestMethod.POST)
 	public String addCar(@ModelAttribute("SpringWeb") Car car, ModelMap model, HttpServletRequest req) {
 
