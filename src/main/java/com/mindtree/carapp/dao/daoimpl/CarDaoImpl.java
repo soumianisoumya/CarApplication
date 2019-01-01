@@ -34,7 +34,6 @@ public class CarDaoImpl implements CarDao {
 			String sql = "select * from car where modelnum=" + carId;
 			return jdbcTemplate.query(sql, new CarRowMapper()).get(0);
 		} catch (Exception e) {
-//			e.printStackTrace();
 			throw new DaoException("Cannot get car data", e.getCause());
 		}
 	}
@@ -44,6 +43,16 @@ public class CarDaoImpl implements CarDao {
 		try {
 			String sql = "select * from car";
 			return jdbcTemplate.query(sql, new CarRowMapper());
+		} catch (Exception e) {
+			throw new DaoException("Cannot get car data", e.getCause());
+		}
+	}
+	
+	@Override
+	public void deleteCar(int carId) throws DaoException{
+		try {
+		String sql = "delete from car where modelnum=" + carId;
+		jdbcTemplate.execute(sql);
 		} catch (Exception e) {
 			throw new DaoException("Cannot get car data", e.getCause());
 		}
