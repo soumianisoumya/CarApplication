@@ -12,4 +12,6 @@ public interface CarService {
 	public Car getCarById(int carId) throws ServiceException;
 
 	public List<Car> getAllCars() throws ServiceException;
+
+	public void deleteCarById(int carId) throws ServiceException;
 }

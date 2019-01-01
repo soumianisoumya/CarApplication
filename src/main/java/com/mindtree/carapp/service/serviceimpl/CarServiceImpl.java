@@ -21,18 +21,18 @@ public class CarServiceImpl implements CarService {
 	public String addCar(Car car) throws ServiceException {
 		try {
 			return carDao.insert(car);
-//			return "success";
 		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage(), e.getCause());
 		}
 	}
-	
+
+	@Override
 	public Car getCarById(int carId) throws ServiceException {
 		try {
 			return carDao.getCar(carId);
 		} catch (DaoException e) {
 			e.printStackTrace();
-			throw new ServiceException(e.getMessage(),e.getCause());
+			throw new ServiceException(e.getMessage(), e.getCause());
 		}
 	}
 
@@ -45,7 +45,14 @@ public class CarServiceImpl implements CarService {
 		} catch (DaoException e) {
 			throw new ServiceException(e.getMessage(), e.getCause());
 		}
-
 	}
 
+	@Override
+	public void deleteCarById(int carId) throws ServiceException {
+		try {
+			carDao.deleteCar(carId);
+		} catch (DaoException e) {
+			throw new ServiceException(e.getMessage(), e.getCause());
+		}
+	}
 }

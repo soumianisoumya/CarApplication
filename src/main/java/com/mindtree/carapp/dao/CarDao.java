@@ -13,4 +13,6 @@ public interface CarDao {
 
 	public List<Car> displayCar() throws DaoException;
 
+	void deleteCar(int carId) throws DaoException;
+
 }
