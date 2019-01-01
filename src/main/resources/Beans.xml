@@ -11,7 +11,7 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver"></property>
 		<property name="url"
-			value="jdbc:mysql://172.17.0.2:3306/carinfo"></property>
+			value="jdbc:mysql://172.17.0.3:3306/carinfo"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="welcome123"></property>
 	</bean>
