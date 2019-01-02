@@ -18,6 +18,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.mindtree.carapp.dao.CarDao;
 import com.mindtree.carapp.entity.Car;
+import com.mindtree.carapp.exception.DaoException;
 import com.mindtree.carapp.exception.ServiceException;
 import com.mindtree.carapp.service.CarService;
 
@@ -25,16 +26,17 @@ import com.mindtree.carapp.service.CarService;
 public class ServiceImplTest {
 
 	static AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-	static Car car=new Car();
-	
+	static Car car = new Car();
+
 	@Mock
 	CarDao carDao;
-	
+
 	@InjectMocks
 	static CarService carSer = context.getBean("carServiceBean", CarServiceImpl.class);
 
-	@Rule public MockitoRule rule = MockitoJUnit.rule();
-	
+	@Rule
+	public MockitoRule rule = MockitoJUnit.rule();
+
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
@@ -42,16 +44,24 @@ public class ServiceImplTest {
 		car.setModelName("FordXT18");
 		car.setPrice(1250);
 	}
-	
+
 	@Test
 	public void testAddCar() throws ServiceException {
-		when(carDao.insert(car)).thenReturn("success");
-		assertEquals("success", carSer.addCar(car) );
+		try {
+			when(carDao.insert(car)).thenReturn("success");
+			assertEquals("success", carSer.addCar(car));
+		} catch (DaoException e) {
+			throw new ServiceException(e.getMessage(), e.getCause());
+		}
 	}
-	
+
 	@Test
 	public void testFetchCar() throws ServiceException {
-		when(carDao.getCar(1101)).thenReturn(car);
-		assertEquals("FordXT18", carSer.getCarById(1101).getModelName());
+		try {
+			when(carDao.getCar(1101)).thenReturn(car);
+			assertEquals("FordXT18", carSer.getCarById(1101).getModelName());
+		} catch (DaoException e) {
+			throw new ServiceException(e.getMessage(), e.getCause());
+		}
 	}
 }
