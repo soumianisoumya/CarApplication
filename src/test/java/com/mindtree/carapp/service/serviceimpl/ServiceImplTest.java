@@ -22,7 +22,7 @@ import com.mindtree.carapp.exception.ServiceException;
 import com.mindtree.carapp.service.CarService;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
-public class CarServiceTest {
+public class ServiceImplTest {
 
 	static AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 	static Car car=new Car();
