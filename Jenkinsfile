@@ -2,7 +2,7 @@ node {
        def mvn_version = 'mvn1' 
         stage('download repo') { 
 
-        git 'https://github.com/soumianisoumya/MVC.git' 
+        git 'https://github.com/soumianisoumya/CarApplication.git' 
 
         withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] ) { 
 
