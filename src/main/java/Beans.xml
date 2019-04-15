@@ -29,5 +29,5 @@
 	<bean id="carBean"
 		class="com.mindtree.carapp.entity.Car"
 		scope="prototype">
-	</bean
+	</bean>
 </beans>
