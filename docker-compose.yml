@@ -1,0 +1,44 @@
+version: '3.1'
+
+services:
+
+ db:
+#  build:
+#   context: ./
+#   dockerfile: ./db.Dockerfile
+  image: localhost:5000/sql_image
+  container_name: my_sql
+  environment:
+   MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+  volumes:
+   - my-datavolume:/var/lib/mysql
+  networks:
+   - network1
+  ports:
+   - "8082:3306"
+  secrets:
+   - db_root_password
+
+ web:
+#  build:
+#   context: ./
+#   dockerfile: ./Dockerfile
+  image: localhost:5000/tomcat_image
+  container_name: my_tomcat
+  networks:
+   - network1
+  ports:
+   - "8085:8080"
+  links:
+   - db
+
+volumes:
+ my-datavolume:
+
+secrets:
+ db_root_password:
+  external: true
+
+networks:
+ network1:
+  driver: weaveworks/net-plugin:latest_release

@@ -1,0 +1,5 @@
+CREATE TABLE car(
+modelnum INT(6) PRIMARY KEY,
+modelname VARCHAR(30) NOT NULL,
+price DOUBLE NOT NULL
+); 
